@@ -1,0 +1,6 @@
+{
+  "name": "Mobile Network Resilience",
+  "description": "Resilient multi-layer network connectivity toolkit for Xray, HAPP client, Windows, VPS, and Orange Pi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

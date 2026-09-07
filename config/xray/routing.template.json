@@ -1,0 +1,24 @@
+{
+  "domainStrategy": "IPIfNonMatch",
+  "rules": [
+    {
+      "type": "field",
+      "ip": [
+        "geoip:private"
+      ],
+      "outboundTag": "block"
+    },
+    {
+      "type": "field",
+      "protocol": [
+        "bittorrent"
+      ],
+      "outboundTag": "block"
+    },
+    {
+      "type": "field",
+      "network": "tcp,udp",
+      "outboundTag": "direct"
+    }
+  ]
+}

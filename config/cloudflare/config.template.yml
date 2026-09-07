@@ -1,0 +1,39 @@
+# ==============================================================================
+# Cloudflare Tunnel Configuration Template (cloudflared)
+# Docs: https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/
+# ==============================================================================
+
+# Tunnel UUID or Name (populated during 'cloudflared tunnel create')
+tunnel: 00000000-0000-0000-0000-000000000000
+credentials-file: ~/.cloudflared/00000000-0000-0000-0000-000000000000.json
+
+# Performance and Protocol Settings
+# By default, cloudflared uses QUIC (HTTP/3) with automatic fallback to HTTP/2
+protocol: auto
+
+# Ingress Rules (Evaluated in sequential order)
+ingress:
+  # Profile B1: VLESS WebSocket Inbound
+  - hostname: tunnel.yourdomain.com
+    path: ^/stream-ws-change-me
+    service: http://127.0.0.1:8080
+    originRequest:
+      connectTimeout: 30s
+      noTLSVerify: true
+      tcpKeepAlive: 30s
+
+  # Profile B2: VLESS XHTTP Inbound
+  - hostname: tunnel.yourdomain.com
+    path: ^/stream-xh-change-me
+    service: http://127.0.0.1:8081
+    originRequest:
+      connectTimeout: 30s
+      noTLSVerify: true
+      tcpKeepAlive: 30s
+
+  # Catch-all status check / healthcheck responder
+  - hostname: tunnel.yourdomain.com
+    service: http_status:404
+
+  # Default fallback for any unmatched hostnames
+  - service: http_status:404

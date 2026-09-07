@@ -1,0 +1,42 @@
+# Environment Variables & Secrets
+.env
+.env.local
+*.env
+secrets.json
+credentials.json
+
+# Generated Configs with real keys
+config/xray/*.runtime.json
+config/cloudflare/*.runtime.yml
+client/android/*.runtime.txt
+
+# Binary Files & Archives
+*.exe
+*.zip
+*.tar.gz
+*.tgz
+*.deb
+*.rpm
+bin/
+tmp/
+*.dgst
+
+# Logs & Runtime State
+logs/
+*.log
+watchdog.state
+state/
+backups/
+
+# System and OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node / Vite Artifacts (for AI Studio preview UI)
+node_modules/
+dist/
+.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
